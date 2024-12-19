@@ -27,6 +27,7 @@ const RadialSlider = (props: RadialSliderProps & typeof defaultProps) => {
     sliderWidth,
     sliderTrackColor,
     linearGradient,
+    strokeColor,
     thumbRadius,
     thumbBorderColor,
     thumbColor,
@@ -169,7 +170,9 @@ const RadialSlider = (props: RadialSliderProps & typeof defaultProps) => {
             />
             <Path
               strokeWidth={sliderWidth}
-              stroke="url(#gradient)"
+              stroke={`${
+                linearGradient.length > 0 ? 'url(#gradient)' : strokeColor
+              }`}
               fill="none"
               strokeLinecap={strokeLinecap}
               d={`M${startPoint.x},${startPoint.y} A ${radius},${radius},0,${

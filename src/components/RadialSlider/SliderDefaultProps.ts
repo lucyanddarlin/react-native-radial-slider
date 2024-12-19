@@ -18,10 +18,8 @@ export const defaultProps = {
   sliderTrackColor: Colors.grey,
   lineColor: Colors.grey,
   lineSpace: 3,
-  linearGradient: [
-    { offset: '0%', color: Colors.skyBlue },
-    { offset: '100%', color: Colors.darkBlue },
-  ],
+  linearGradient: [] as { offset: string; color: string }[],
+  strokeColor: 'pink',
   onChange: (_v: number) => {},
   onComplete: (_v: number) => {},
   openingRadian: Math.PI / 3,

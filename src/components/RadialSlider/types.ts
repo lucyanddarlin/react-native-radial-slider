@@ -215,8 +215,13 @@ export type RadialSliderProps = {
   lineSpace?: number;
   /**
    * Gradient color of selected track.
+   * [ { offset: '0%', color:'#ffaca6' }, { offset: '100%', color: '#EA4800' }]
    */
   linearGradient?: { offset: string; color: string }[];
+  /**
+   * color of selected track
+   */
+  strokeColor?: string;
   /**
    * Callback function which fired on change in track.
    */
