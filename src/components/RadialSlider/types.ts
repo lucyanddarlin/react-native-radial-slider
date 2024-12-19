@@ -126,6 +126,7 @@ export type NeedleContentProps = {
 export type RootSliderProps =
   | ({
       variant?: 'radial-circle-slider';
+      children?: any;
     } & RadialSliderExcludedProps &
       RadialSliderProps)
   | ({
@@ -133,6 +134,7 @@ export type RootSliderProps =
     } & SpeedoMeterProps);
 
 export type RadialSliderProps = {
+  children?: any;
   /**
    * Radious of radial slider.
    */

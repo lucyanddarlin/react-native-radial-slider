@@ -1,6 +1,6 @@
 {
   "name": "react-native-lucy-radial-slider",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "React Native component to select or highlight a specific value from a range of values",
   "homepage": "https://github.com/SimformSolutionsPvtLtd/react-native-radial-slider#readme",
   "main": "lib/index.js",
@@ -30,8 +30,8 @@
     "build": "rm -rf lib && tsc -p .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest",
-    "publish": "yarn build && yalc push",
-    "watch": "nodemon --ignore dist/ --ignore node_modules/ --ignore lib/ --watch src/ -C -e js,jsx,ts,tsx,css,less -x 'yarn publish'"
+    "push": "yarn build && yalc push",
+    "watch": "nodemon --ignore dist/ --ignore node_modules/ --ignore lib/ --watch src/ -C -e js,jsx,ts,tsx,css,less -x 'yarn push'"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",

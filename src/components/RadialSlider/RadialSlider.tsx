@@ -14,7 +14,6 @@ import { Colors } from '../../theme';
 import { useSliderAnimation, useRadialSlider } from './hooks';
 import { defaultProps } from './SliderDefaultProps';
 import ButtonContent from './ButtonContent';
-import CenterContent from './CenterContent';
 import TailText from './TailText';
 import LineContent from './LineContent';
 
@@ -40,13 +39,13 @@ const RadialSlider = (props: RadialSliderProps & typeof defaultProps) => {
     min,
     max,
     isHideSlider,
-    isHideCenterContent,
     isHideTailText,
     isHideButtons,
     isHideLines,
     leftIconStyle,
     rightIconStyle,
     stroke,
+    children,
   } = props;
 
   const { panResponder, value, setValue, curPoint, currentRadian, prevValue } =
@@ -191,7 +190,7 @@ const RadialSlider = (props: RadialSliderProps & typeof defaultProps) => {
       </Svg>
       <View style={[styles.content, contentStyle]} pointerEvents="box-none">
         {/* Center Content */}
-        {!isHideCenterContent && <CenterContent {...props} value={value} />}
+        {children}
         {/* Button Content */}
         {!isRadialCircleVariant && !isHideButtons && (
           <View style={[styles.buttonsWrapper, buttonContainerStyle]}>
