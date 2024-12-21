@@ -59,10 +59,10 @@ const useSliderAnimation = (props: RadialSliderAnimationHookProps) => {
     }
   }, [props?.value]);
 
-  useEffect(() => {
-    onChange(value);
-    prevValue.current = value;
-  }, [value]);
+  // useEffect(() => {
+  //   onChange(value);
+  //   prevValue.current = value;
+  // }, [value]);
 
   const handlePanResponderGrant = () => {
     moveStartValue = prevValue.current;
