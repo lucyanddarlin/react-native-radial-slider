@@ -50,7 +50,6 @@ const useSliderAnimation = (props: RadialSliderAnimationHookProps) => {
     } else if (min > props?.value) {
       setValue(min);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [max, min]);
 
   useEffect(() => {
@@ -58,13 +57,11 @@ const useSliderAnimation = (props: RadialSliderAnimationHookProps) => {
       setValue(props?.value);
       prevValue.current = props?.value;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props?.value]);
 
   useEffect(() => {
     onChange(value);
     prevValue.current = value;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   const handlePanResponderGrant = () => {
@@ -86,7 +83,6 @@ const useSliderAnimation = (props: RadialSliderAnimationHookProps) => {
     );
     return true;
   };
-
   const handlePanResponderMove = (
     _e: GestureResponderEvent,
     gestureState: PanResponderGestureState
@@ -153,7 +149,19 @@ const useSliderAnimation = (props: RadialSliderAnimationHookProps) => {
       onPanResponderTerminationRequest: () => false,
       onPanResponderTerminate: handlePanResponderEnd,
     })
-  ).current;
+  );
+
+  useEffect(() => {
+    panResponder.current = PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => false,
+      onPanResponderGrant: handlePanResponderGrant,
+      onPanResponderMove: handlePanResponderMove,
+      onPanResponderRelease: handlePanResponderEnd,
+      onPanResponderTerminationRequest: () => false,
+      onPanResponderTerminate: handlePanResponderEnd,
+    });
+  }, [min, max]);
 
   const currentRadian = getCurrentRadian(value, radianValue, max, min);
 
@@ -168,7 +176,7 @@ const useSliderAnimation = (props: RadialSliderAnimationHookProps) => {
   );
 
   return {
-    panResponder,
+    panResponder: panResponder.current,
     prevValue,
     value,
     setValue,
