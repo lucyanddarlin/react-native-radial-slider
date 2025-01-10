@@ -315,6 +315,14 @@ export type RadialSliderProps = {
    */
   isHideMarkerLine?: boolean;
   /**
+   * If true, stroke will be hidden.
+   */
+  isHideStroke?: boolean;
+  /**
+   * If true, thumb will be hidden.
+   */
+  isHideThumb?: boolean;
+  /**
    * If true, marked value will be hidden.
    */
   fixedMarker?: boolean;

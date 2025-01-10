@@ -43,6 +43,8 @@ const RadialSlider = (props: RadialSliderProps & typeof defaultProps) => {
     isHideTailText,
     isHideButtons,
     isHideLines,
+    isHideStroke,
+    isHideThumb,
     leftIconStyle,
     rightIconStyle,
     stroke,
@@ -168,26 +170,30 @@ const RadialSlider = (props: RadialSliderProps & typeof defaultProps) => {
                 startRadian - radianValue >= Math.PI ? '1' : '0'
               },1,${endPoint.x},${endPoint.y}`}
             />
-            <Path
-              strokeWidth={sliderWidth}
-              stroke={`${
-                linearGradient.length > 0 ? 'url(#gradient)' : strokeColor
-              }`}
-              fill="none"
-              strokeLinecap={strokeLinecap}
-              d={`M${startPoint.x},${startPoint.y} A ${radius},${radius},0,${
-                startRadian - currentRadian >= Math.PI ? '1' : '0'
-              },1,${curPoint.x},${curPoint.y}`}
-            />
-            <Circle
-              cx={curPoint.x + circleXPosition}
-              cy={curPoint.y}
-              r={thumbRadius}
-              fill={thumbColor || thumbBorderColor}
-              stroke={thumbBorderColor}
-              strokeWidth={thumbBorderWidth}
-              {...panResponder.panHandlers}
-            />
+            {!isHideStroke && (
+              <Path
+                strokeWidth={sliderWidth}
+                stroke={`${
+                  linearGradient.length > 0 ? 'url(#gradient)' : strokeColor
+                }`}
+                fill="none"
+                strokeLinecap={strokeLinecap}
+                d={`M${startPoint.x},${startPoint.y} A ${radius},${radius},0,${
+                  startRadian - currentRadian >= Math.PI ? '1' : '0'
+                },1,${curPoint.x},${curPoint.y}`}
+              />
+            )}
+            {!isHideThumb && (
+              <Circle
+                cx={curPoint.x + circleXPosition}
+                cy={curPoint.y}
+                r={thumbRadius}
+                fill={thumbColor || thumbBorderColor}
+                stroke={thumbBorderColor}
+                strokeWidth={thumbBorderWidth}
+                {...panResponder.panHandlers}
+              />
+            )}
           </>
         )}
       </Svg>

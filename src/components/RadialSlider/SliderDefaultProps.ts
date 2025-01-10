@@ -33,6 +33,8 @@ export const defaultProps = {
   isHideLines: false,
   isHideMarkerLine: false,
   isHideCenterContent: false,
+  isHideStroke: false,
+  isHideThumb: false,
   fixedMarker: false,
   variant: 'default',
   markerValueInterval: 10,
